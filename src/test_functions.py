@@ -18,7 +18,7 @@ def test_get_posts_id():
     get_posts_id_responce = get_posts_id(get_num)
     assert get_posts_id(get_num).status_code == 200, f'something went wrong with getting posts with id {get_num}'
     get_posts_id_data = get_posts_id_responce.json()
-    assert get_posts_id_data['userId'] == get_num
+    assert get_posts_id_data['userId'] == get_num, f'something went wrong with getting posts with id {get_num}'
 
 
 def test_post_posts():
