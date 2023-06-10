@@ -1,5 +1,6 @@
 import requests
 
+
 url = 'https://jsonplaceholder.typicode.com'
 
 
@@ -67,7 +68,7 @@ def test_post_posts_spchar_id():
 
 
 def test_delete_posts():
-    assert delete_posts().status_code == 200, 'something went wrong with deleting posts'
+    assert delete_posts().status_code == 200, 'something went wrong with deleting posts because there is no such link as /posts for delete request'
 
 
 def test_delete_posts_id():
