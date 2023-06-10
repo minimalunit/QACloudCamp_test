@@ -4,7 +4,6 @@ import requests
 url = 'https://jsonplaceholder.typicode.com'
 
 
-
 def test_check_successful_receiving_posts():
     assert get_posts().status_code == 200, 'something went wrong with getting posts'
 
@@ -27,8 +26,28 @@ def test_check_successful_post_creation():
     assert post_posts_response.status_code == 201, 'something went wrong with posting posts'
 
 
+def test_check_successful_post_creation_with_numbers_in_title():
+    post_posts_response = post_posts(jsontitle='124436')
+    assert post_posts_response.status_code == 201, 'something went wrong with posting posts'
+
+
+def test_check_successful_post_creation_with_spchar_in_title():
+    post_posts_response = post_posts(jsontitle='!?/')
+    assert post_posts_response.status_code == 201, 'something went wrong with posting posts'
+
+
+def test_check_successful_post_creation_with_numbers_in_body():
+    post_posts_response = post_posts(jsonbody='124436')
+    assert post_posts_response.status_code == 201, 'something went wrong with posting posts'
+
+
+def test_check_successful_post_creation_with_spchar_in_body():
+    post_posts_response = post_posts(jsonbody='!?/')
+    assert post_posts_response.status_code == 201, 'something went wrong with posting posts'
+
+
 def test_check_error_creation_post_with_empty_id():
-    post_posts_response = post_posts(jsonId='')
+    post_posts_response = post_posts(jsonid='')
     assert post_posts_response.status_code == 400, 'no userId - no post'
 
 
@@ -43,7 +62,7 @@ def test_check_error_creation_post_with_empty_body():
 
 
 def test_check_error_creation_post_with_space_id():
-    post_posts_response = post_posts(jsonId=' ')
+    post_posts_response = post_posts(jsonid=' ')
     assert post_posts_response.status_code == 400, 'only space in userId - no post'
 
 
@@ -58,12 +77,12 @@ def test_check_error_creation_post_with_space_body():
 
 
 def test_check_error_creation_post_with_letter_id():
-    post_posts_response = post_posts(jsonId='one')
+    post_posts_response = post_posts(jsonid='one')
     assert post_posts_response.status_code == 400, 'letters in userId - no post'
 
 
 def test_check_error_creation_post_with_spchar_id():
-    post_posts_response = post_posts(jsonId='!?')
+    post_posts_response = post_posts(jsonid='!?')
     assert post_posts_response.status_code == 400, 'special characters in userId - no post'
 
 
@@ -72,14 +91,13 @@ def test_check_delete_posts():
 
 
 def test_check_successful_delete_post():
-    del_num = 1
-    assert delete_posts_id(del_num).status_code == 200, f'something went wrong with deleting post {del_num}'
+    delete_id = 1
+    assert delete_posts_id(delete_id).status_code == 200, f'something went wrong with deleting post {delete_id}'
 
 
 def test_check_error_delete_post_non_existent_id():
     delete_non_existent_id = 14123465454
     assert delete_posts_id(delete_non_existent_id).status_code == 400, f'something went wrong with deleting post {delete_non_existent_id}'
-
 
 
 def get_posts():
@@ -90,10 +108,9 @@ def get_posts_id(get_num):
     return requests.get(url + f'/posts/{get_num}')
 
 
-
-def post_posts(jsonId='1', jsontitle='title', jsonbody='body'):
+def post_posts(jsonid='1', jsontitle='title', jsonbody='body'):
     json_par = {
-        'userId': jsonId,
+        'userId': jsonid,
         'title': jsontitle,
         'body': jsonbody
     }
