@@ -47,7 +47,7 @@ def test_post_posts_space_id():
     assert post_posts_responce.status_code == 400, 'only space in userId - no post'
 
 
-def test_post_posts_soace_title():
+def test_post_posts_space_title():
     post_posts_responce = post_posts(jsontitle=' ')
     assert post_posts_responce.status_code == 400, 'only space in title - no post'
 
