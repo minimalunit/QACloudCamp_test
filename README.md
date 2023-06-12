@@ -1,5 +1,11 @@
 ## QACloudCamp_test
-### Тестовое задание для QACloudCamp
+#### Тестовое задание для QACloudCamp
+
+<b>Процесс тестирования нового функционала</b>
+
+Описание стратегии находится в файле <i>test_strategy.txt</i>, примеры тест-кейсов приведены в таблице по ссылке: https://docs.google.com/spreadsheets/d/1uxYzTftEkTMmBPMzWqXjZDs6uDCgKpk245nN_ejzbhw/edit?usp=sharing
+
+<b>Автоматизация тестирования API</b>
 
 Набор тестов <i>test_functions.py</i> содержит набор тестов на <b>GET /posts</b>, <b>POST /posts</b>, <b>DELETE /posts</b>. Добавлен вариант <b>GET /posts/id</b> и <b>DELETE /posts/id</b> (в спецификациях для <i>https://jsonplaceholder.typicode.com/</i> отсутствует DELETE /posts).
 
