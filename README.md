@@ -11,6 +11,17 @@
 
 Набор тестов <i>test_functions_if.py</i> содержит аналогичный набор тестов, однако предполагает что изменения действительно происходят на сервере и их можно проверить, поэтому в нем вылезают ошибки (ведь сервер имитирует изменения, а не производит их).
 
+Для запуска клонируем проект:
+<i>git clone git@github.com:minimalunit/QACloudCamp_test.git</i>
+Cоздаем новое окружение:
+<i>python3 -m venv qacloudcamp_test</i>
+Запускаем окружение:
+<i>source qacloudcamp_test/bin/activate</i>
+Устанавливаем настройки:
+<i>pip install -r requirements.txt</i>
+Запускаем тесты:
+<i>pytest -v src/test_functions.py</i>
+
 Для запуска Dockerfile в директории проекта необходимо ввести команду "<i>docker build -t qacloudcamp_test &nbsp;.</i>", для запуска тестирования ввести команду "<i>docker run qacloudcamp_test</i>".
 
 Список тестов:
